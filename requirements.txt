@@ -1,0 +1,4 @@
+django
+djangorestframework
+flake8
+opencv-contrib-python
