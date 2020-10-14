@@ -26,14 +26,14 @@ model = Sequential()
 model.add(ResNet50(input_shape=(IMG_SIZE, IMG_SIZE, 3), include_top=False))
 model.add(Flatten())
 model.add(Dropout(.2))
-model.add(Dense(num_class, activation='sigmoid'))
+model.add(Dense(num_class, activation='relu'))
 
 
 model.layers[0].trainable = False
 model.summary()
 
 # compliling model
-model.compile(loss="binary_crossentropy",
+model.compile(loss=tf.keras.losses.MeanSquaredError(),
               optimizer="adam",
               metrics=['accuracy'])
 

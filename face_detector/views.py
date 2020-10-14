@@ -51,10 +51,10 @@ def detect(request):
 
             # load the image and convert
             image = _grab_image(url=url)
-
+            # cv2.imwrite('urlimage.jpg', image)
         # convert the image to grayscale, load the face cascade detector,
         # and detect faces in the image
-            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            # image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
             detector = cv2.CascadeClassifier(FACE_DETECTOR_PATH)
             faces = detector.detectMultiScale(
@@ -71,12 +71,13 @@ def detect(request):
 
                 face = cv2.resize(face_roi, (IMAGE_SIZE, IMAGE_SIZE))
 
-                # img = Image.fromarray(face, 'L')
+                img = Image.fromarray(face, mode='RGB')
+                # img = Image.frombytes('RGBA', (128, 128), face, 'raw')
 
-                # img_array = np.array(img)
-                # img_array = np.expand_dims(img_array, axis=0)
+                img_array = np.array(img)
+                img_array = np.expand_dims(img_array, axis=0)
                 # cv2.imwrite('urlimage.jpg', img_array)
-                prediction = model.predict(face)
+                prediction = model.predict(img_array)
                 print(prediction)
                 index = np.argmax(prediction)
                 print(index)
