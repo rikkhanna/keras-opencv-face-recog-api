@@ -26,14 +26,14 @@ model = Sequential()
 model.add(ResNet50(input_shape=(IMG_SIZE, IMG_SIZE, 3), include_top=False))
 model.add(Flatten())
 model.add(Dropout(.2))
-model.add(Dense(num_class, activation='relu'))
+model.add(Dense(num_class, activation='softmax'))
 
 
 model.layers[0].trainable = False
 model.summary()
 
-# compliling model
-model.compile(loss=tf.keras.losses.MeanSquaredError(),
+# compliling model === tf.keras.losses.MeanSquaredError()
+model.compile(loss='categorical_crossentropy',
               optimizer="adam",
               metrics=['accuracy'])
 
@@ -47,7 +47,7 @@ train_generator = train_image_generator.flow_from_directory(
     TRAIN_DATADIR,
     target_size=(IMG_SIZE, IMG_SIZE),
     batch_size=32,
-    class_mode='binary'
+    class_mode='categorical'
 )
 
 # validation_generator = validation_image_generator.flow_from_directory(
