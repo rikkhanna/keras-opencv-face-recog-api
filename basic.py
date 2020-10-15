@@ -64,7 +64,7 @@ BATCH_SIZE = 32
 
 data_dir = tf.keras.utils.get_file(
     'people',
-    'https://github.com/rikkhanna/keras-opencv-face-recog-api/blob/master/images.tgz',
+    'https://github.com/rikkhanna/keras-opencv-face-recog-api/blob/master/images.tar.gz',
     untar=True)
 
 datagen_kwargs = dict(rescale=1./255, validation_split=.20)
