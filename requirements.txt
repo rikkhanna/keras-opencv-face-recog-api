@@ -2,3 +2,4 @@ django
 djangorestframework
 flake8
 opencv-contrib-python
+tensorflow>=2.0.0
