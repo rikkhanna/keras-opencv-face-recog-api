@@ -58,13 +58,13 @@ handle_base, pixels = module_selection
 MODULE_HANDLE = "https://tfhub.dev/google/imagenet/{}/feature_vector/4".format(
     handle_base)
 IMAGE_SIZE = (pixels, pixels)
-print("Using {} with input size {}".format(MODULE_HANDLE, IMAGE_SIZE))
+# print("Using {} with input size {}".format(MODULE_HANDLE, IMAGE_SIZE))
 
 BATCH_SIZE = 32
 
 data_dir = tf.keras.utils.get_file(
-    'person_photos',
-    'https://github.com/rikkhanna/keras-opencv-face-recog-api/blob/master/images.tar',
+    'people',
+    'https://github.com/rikkhanna/keras-opencv-face-recog-api/blob/master/images.tgz',
     untar=True)
 
 datagen_kwargs = dict(rescale=1./255, validation_split=.20)
