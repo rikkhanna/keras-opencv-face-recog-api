@@ -63,8 +63,8 @@ print("Using {} with input size {}".format(MODULE_HANDLE, IMAGE_SIZE))
 BATCH_SIZE = 32
 
 data_dir = tf.keras.utils.get_file(
-    'flower_photos',
-    'https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz',
+    'person_photos',
+    'https://github.com/rikkhanna/keras-opencv-face-recog-api/blob/master/images.tar',
     untar=True)
 
 datagen_kwargs = dict(rescale=1./255, validation_split=.20)
